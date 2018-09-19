@@ -147,5 +147,15 @@ public class Model {
 		}
 		return null;
 	}
+	
+	public int getCustoByTransicao(State origem, State destino) {
+		for(Transition t : origem.getNeighbors()) {
+			if(t.getDestiny().getName().equals(destino.getName())) {
+				return t.getAction().getWeight();
+			}
+		}
+		
+		return 0;
+	}
 
 }

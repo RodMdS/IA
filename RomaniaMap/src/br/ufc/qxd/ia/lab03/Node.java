@@ -3,7 +3,7 @@ package br.ufc.qxd.ia.lab03;
 import br.ufc.qxd.ia.lab02.Action;
 import br.ufc.qxd.ia.lab02.State;
 
-public class Node {
+public class Node implements Comparable<Node> {
 	
 	private State state;
 	private int costOfTheWay;
@@ -49,6 +49,13 @@ public class Node {
 
 	public void setFather(Node father) {
 		this.father = father;
+	}
+
+	@Override
+	public int compareTo(Node node) {
+		if(this.costOfTheWay > node.costOfTheWay) return 1;
+		else if(this.costOfTheWay < node.costOfTheWay) return -1;
+		else return 0;
 	}
 
 }
