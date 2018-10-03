@@ -38,7 +38,7 @@ public class Main {
 		hDLR_bucharest.put(model.getStateByName("Vaslui"), 199);
 		hDLR_bucharest.put(model.getStateByName("Zerind"), 374);
 		
-		State start = model.getStateByName(args[1]);
+		State start = model.getStateByName("Timisoara");
 		State end = model.getStateByName("Bucharest");
 		Problem p = new Problem(start, null, model, end);
 		
@@ -55,13 +55,7 @@ public class Main {
 //			System.out.println("Custo total: " + p.getCostByWay());
 //		}
 		
-		List<Action> solution = null;
-		if(args[0].equals("Guloso")) {
-			solution = search.greedySearchForBestChoice();
-		} else if(args[0].equals("Aestrela")) {
-			solution = search.aStarSearch();
-		}
-		
+		List<Action> solution = search.uniformCostSearch();
 		if(solution == null)
 			System.out.println("Falha");
 		else if(solution.isEmpty()) {
@@ -71,6 +65,34 @@ public class Main {
 			System.out.println();
 			System.out.println("Custo total: " + p.getCostByWay());
 		}
+		
+//		List<Action> solution = search.uniformCostSearch();
+//		if(solution == null)
+//			System.out.println("Falha");
+//		else if(solution.isEmpty()) {
+//			System.out.println("Custo total: " + 0);
+//		} else {
+//			for(int i = solution.size() - 1; i >= 0; i--) System.out.println(solution.get(i).getName());
+//			System.out.println();
+//			System.out.println("Custo total: " + p.getCostByWay());
+//		}
+		
+//		List<Action> solution = null;
+//		if(args[0].equals("Guloso")) {
+//			solution = search.greedySearchForBestChoice();
+//		} else if(args[0].equals("Aestrela")) {
+//			solution = search.aStarSearch();
+//		}
+//		
+//		if(solution == null)
+//			System.out.println("Falha");
+//		else if(solution.isEmpty()) {
+//			System.out.println("Custo total: " + 0);
+//		} else {
+//			for(int i = solution.size() - 1; i >= 0; i--) System.out.println(solution.get(i).getName());
+//			System.out.println();
+//			System.out.println("Custo total: " + p.getCostByWay());
+//		}
 
 	}
 
